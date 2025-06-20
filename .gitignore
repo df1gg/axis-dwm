@@ -1,0 +1,27 @@
+# Object files, executables, and build artifacts
+*.o
+*.out
+*.swp
+*.rej
+
+# Binaries
+dwm
+dwmstatus
+
+# Backup files
+*~
+*.bak
+
+# Debug
+core
+
+# Logs
+*.log
+
+# Misc
+.DS_Store
+
+# Ignore config.status / config.log if present
+config.log
+config.status
+
