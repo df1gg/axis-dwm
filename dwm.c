@@ -731,7 +731,7 @@ void drawbar(Monitor *m) {
   /* draw status first so it can be overdrawn by tags later */
   if (m == selmon) { /* status is only drawn on selected monitor */
     drw_setscheme(drw, scheme[SchemeNorm]);
-    tw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
+    tw = TEXTW(stext) - lrpad + 4; /* 2px right padding */
     drw_text(drw, m->ww - sw - 2 * sp, 0, sw, bh, 0, stext, 0);
   }
 
@@ -740,16 +740,25 @@ void drawbar(Monitor *m) {
     if (c->isurgent)
       urg |= c->tags;
   }
+
   x = 0;
   for (i = 0; i < LENGTH(tags); i++) {
     w = TEXTW(tags[i]);
     drw_setscheme(drw, scheme[SchemeTag1 + i]);
-    drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], 0);
+    drw_text(drw, x, 0, w - 1, bh, lrpad / 2 - 2, tags[i], urg & 1 << i);
+
+    if (ulineall || (m->tagset[m->seltags] & (1 << i))) {
+      // Подчёркивание активного тега
+      drw_rect(drw, x + ulinepad, bh - ulinestroke - ulinevoffset,
+               w - (ulinepad * 2), ulinestroke, 1, 0); // filled, not outlined
+    }
+
     x += w;
   }
+
   w = TEXTW(m->ltsymbol);
   drw_setscheme(drw, scheme[SchemeNorm]);
-  x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
+  x = drw_text(drw, x - 1, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
   if ((w = m->ww - tw - x) > bh) {
     if (m->sel) {
@@ -762,6 +771,7 @@ void drawbar(Monitor *m) {
       drw_rect(drw, x, 0, w - 2 * sp, bh, 1, 1);
     }
   }
+
   drw_map(drw, m->barwin, 0, 0, m->ww, bh);
 }
 
