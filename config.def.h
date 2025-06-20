@@ -11,10 +11,12 @@ static const unsigned int gappov =
     10; /* vert outer gap between windows and screen edge */
 static const int smartgaps =
     0; /* 1 means no outer gap when there is only one window */
-static const int showbar = 1;  // показывать статусбар
-static const int topbar = 1;   // бар сверху
-static const int vertpad = 10; /* vertical padding of bar */
-static const int sidepad = 10; /* horizontal padding of bar */
+static const int showbar = 1;      // показывать статусбар
+static const int topbar = 1;       // бар сверху
+static const int horizpadbar = 15; /* horizontal padding for statusbar */
+static const int vertpadbar = 10;  /* vertical padding for statusbar */
+static const int vertpad = 10;     /* vertical padding of bar */
+static const int sidepad = 10;     /* horizontal padding of bar */
 static const char *fonts[] = {"JetBrainsMono Nerd Font:size=11"};
 static const char dmenufont[] = "JetBrainsMono Nerd Font:size=11";
 
@@ -35,18 +37,18 @@ enum {
 };
 
 /* Colors */
-static const char black[] = "#1E1D2D";
-static const char gray2[] = "#282737"; // unfocused window border
-static const char gray3[] = "#585767";
-static const char gray4[] = "#282737";
-static const char blue[] = "#96CDFB"; // focused window border
-static const char green[] = "#ABE9B3";
-static const char red[] = "#F28FAD";
-static const char orange[] = "#F8BD96";
-static const char yellow[] = "#FAE3B0";
-static const char pink[] = "#d5aeea";
-static const char col_borderbar[] = "#1E1D2D"; // inner border
-static const char white[] = "#f8f8f2";
+static const char black[] = "#1e2122";
+static const char white[] = "#c7b89d";
+static const char gray2[] = "#282b2c"; // unfocused window border
+static const char gray3[] = "#5d6061";
+static const char gray4[] = "#282b2c";
+static const char blue[] = "#6f8faf"; // focused window border
+static const char green[] = "#89b482";
+static const char red[] = "#ec6b64";
+static const char orange[] = "#d6b676";
+static const char yellow[] = "#d1b171";
+static const char pink[] = "#cc7f94";
+static const char col_borderbar[] = "#1e2122"; // inner border
 
 static const char *colors[][3] = {
     /*             fg       bg      border */
@@ -69,7 +71,7 @@ static const char *tags[] = {"", "", "", "", "",
                              "", "", "", ""};
 
 static const unsigned int ulinepad =
-    4; /* horizontal padding between the underline and tag */
+    7; /* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke =
     2; /* thickness / height of the underline */
 static const unsigned int ulinevoffset =
