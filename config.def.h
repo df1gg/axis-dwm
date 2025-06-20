@@ -1,10 +1,18 @@
 /* appearance */
 static const unsigned int borderpx = 2; // граница окна
 static const unsigned int snap = 10;    // прилипаемость окон
-static const int showbar = 1;           // показывать статусбар
-static const int topbar = 1;            // бар сверху
-static const int vertpad = 10;          /* vertical padding of bar */
-static const int sidepad = 10;          /* horizontal padding of bar */
+static const unsigned int gappih = 10;  /* horiz inner gap between windows */
+static const unsigned int gappiv = 10;  /* vert inner gap between windows */
+static const unsigned int gappoh =
+    10; /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov =
+    10; /* vert outer gap between windows and screen edge */
+static const int smartgaps =
+    0; /* 1 means no outer gap when there is only one window */
+static const int showbar = 1;  // показывать статусбар
+static const int topbar = 1;   // бар сверху
+static const int vertpad = 10; /* vertical padding of bar */
+static const int sidepad = 10; /* horizontal padding of bar */
 static const char *fonts[] = {"JetBrainsMono Nerd Font:size=11"};
 static const char dmenufont[] = "JetBrainsMono Nerd Font:size=11";
 
@@ -73,32 +81,73 @@ static const char *termcmd[] = {"alacritty", NULL};
 
 /* keybindings */
 static const Key keys[] = {
+    /* --- запуск приложений --- */
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
+
+    /* --- внешний вид --- */
     {MODKEY, XK_b, togglebar, {0}},
+
+    /* --- навигация по окнам --- */
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
     {MODKEY, XK_i, incnmaster, {.i = +1}},
     {MODKEY, XK_d, incnmaster, {.i = -1}},
     {MODKEY, XK_h, setmfact, {.f = -0.05}},
     {MODKEY, XK_l, setmfact, {.f = +0.05}},
+
+    /* --- управление gaps (vanitygaps) --- */
+    {MODKEY, XK_g, incrgaps, {.i = +5}},                // увеличить все отступы
+    {MODKEY | ShiftMask, XK_g, incrgaps, {.i = -5}},    // уменьшить все отступы
+    {MODKEY | ControlMask, XK_g, incrogaps, {.i = +5}}, // внешние отступы +
+    {MODKEY | ControlMask | ShiftMask,
+     XK_g,
+     incrogaps,
+     {.i = -5}},                                     // внешние отступы -
+    {MODKEY | Mod1Mask, XK_g, incrigaps, {.i = +5}}, // внутренние отступы +
+    {MODKEY | Mod1Mask | ShiftMask,
+     XK_g,
+     incrigaps,
+     {.i = -5}},                          // внутренние отступы -
+    {MODKEY, XK_minus, togglegaps, {0}},  // включить/выключить gaps
+    {MODKEY, XK_equal, defaultgaps, {0}}, // сбросить gaps к дефолту
+    {MODKEY, XK_y, incrihgaps, {.i = +3}},
+    {MODKEY | ShiftMask, XK_y, incrihgaps, {.i = -3}},
+    {MODKEY, XK_u, incrivgaps, {.i = +3}},
+    {MODKEY | ShiftMask, XK_u, incrivgaps, {.i = -3}},
+    {MODKEY | ControlMask, XK_y, incrohgaps, {.i = +3}},
+    {MODKEY | ControlMask | ShiftMask, XK_y, incrohgaps, {.i = -3}},
+    {MODKEY | ControlMask, XK_u, incrovgaps, {.i = +3}},
+    {MODKEY | ControlMask | ShiftMask, XK_u, incrovgaps, {.i = -3}},
+
+    /* --- управление окнами --- */
     {MODKEY, XK_Return, zoom, {0}},
     {MODKEY, XK_Tab, view, {0}},
     {MODKEY | ShiftMask, XK_c, killclient, {0}},
-    {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
-    {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
-    {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
+
+    /* --- смена layout --- */
+    {MODKEY, XK_t, setlayout, {.v = &layouts[0]}}, // tile
+    {MODKEY, XK_f, setlayout, {.v = &layouts[1]}}, // floating
+    {MODKEY, XK_m, setlayout, {.v = &layouts[2]}}, // monocle
     {MODKEY, XK_space, setlayout, {0}},
     {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
+
+    /* --- теги --- */
     {MODKEY, XK_0, view, {.ui = ~0}},
     {MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
+
     {MODKEY, XK_comma, focusmon, {.i = -1}},
     {MODKEY, XK_period, focusmon, {.i = +1}},
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
+
+    /* --- привязка к тегам --- */
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
-            TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
+            TAGKEYS(XK_9, 8)
+
+    /* --- выход --- */
+    {MODKEY | ShiftMask, XK_q, quit, {0}},
 };
 
 /* mouse */
