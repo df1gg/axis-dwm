@@ -2230,7 +2230,7 @@ void zoom(const Arg *arg) {
 }
 
 int main(int argc, char *argv[]) {
-  system("~/.config/axisdwm/scripts/status.sh &");
+  system("~/.config/axisdwm/scripts/autostart.sh &");
   if (argc == 2 && !strcmp("-v", argv[1]))
     die("dwm-" VERSION);
   else if (argc != 1)
