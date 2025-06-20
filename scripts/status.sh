@@ -6,7 +6,7 @@
 interval=0
 
 # load colors
-. ~/.config/axisdwm/scripts/bar_themes/catppuccin
+. ~/.config/axisdwm/scripts/bar_themes/gruvbox
 
 
 pkg_updates() {

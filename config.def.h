@@ -57,30 +57,30 @@ static const char *colors[][3] = {
     /*             fg       bg      border */
     [SchemeNorm] = {gray3, black, gray2},
     [SchemeSel] = {gray4, blue, blue},
-    [SchemeLayout] = {"#abe9b3", black, black},
-    [SchemeTag1] = {"#8aadf4", black, black},
-    [SchemeTag2] = {"#f4b8e4", black, black},
-    [SchemeTag3] = {"#f9e2af", black, black},
-    [SchemeTag4] = {"#a6e3a1", black, black},
-    [SchemeTag5] = {"#89b4fa", black, black},
-    [SchemeTag6] = {"#f5c2e7", black, black},
-    [SchemeTag7] = {"#94e2d5", black, black},
-    [SchemeTag8] = {"#fab387", black, black},
-    [SchemeTag9] = {"#cdd6f4", black, black},
+    [SchemeLayout] = {"#85ae61", black, black},
+    [SchemeTag1] = {"#6f8faf", black, black},
+    [SchemeTag2] = {"#ec6b64", black, black},
+    [SchemeTag3] = {"#d6b676", black, black},
+    [SchemeTag4] = {"#85ae61", black, black},
+    [SchemeTag5] = {"#6f8faf", black, black},
+    [SchemeTag6] = {"#ec6b64", black, black},
+    [SchemeTag7] = {"#d6b676", black, black},
+    [SchemeTag8] = {"#85ae61", black, black},
+    [SchemeTag9] = {"#6f8faf", black, black},
     [SchemeTagEmpty] = {gray3, black, gray2},
 };
 
 /* tagging */
 static const char *tags[] = {
-    "",  /* Tag1: Editor/Code */
-    "",  /* Tag2: Terminal/Build */
-    "",  /* Tag3: Browser/Docs */
-    "",  /* Tag4: System/Infra */
-    "",  /* Tag5: AI/ML */
-    "󰂮", /* Tag6: Notes */
-    "",  /* Tag7: Chat */
-    "",  /* Tag8: Media */
-    ""   /* Tag9: Sandbox */
+    "", /* Tag1: Editor/Code */
+    "", /* Tag2: Terminal/Build */
+    "", /* Tag3: Browser/Docs */
+    "", /* Tag4: System/Infra */
+    "", /* Tag5: AI/ML */
+    "", /* Tag6: Notes */
+    "", /* Tag7: Chat */
+    "", /* Tag8: Media */
+    ""  /* Tag9: Sandbox */
 };
 
 static const unsigned int ulinepad =
