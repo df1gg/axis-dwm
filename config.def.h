@@ -18,6 +18,21 @@ static const int sidepad = 10; /* horizontal padding of bar */
 static const char *fonts[] = {"JetBrainsMono Nerd Font:size=11"};
 static const char dmenufont[] = "JetBrainsMono Nerd Font:size=11";
 
+enum {
+  SchemeNorm,
+  SchemeSel, // стандартные схемы
+  SchemeTag1,
+  SchemeTag2,
+  SchemeTag3,
+  SchemeTag4,
+  SchemeTag5,
+  SchemeTag6,
+  SchemeTag7,
+  SchemeTag8,
+  SchemeTag9,
+  SchemeLast
+};
+
 /* Colors */
 static const char black[] = "#1E1D2D";
 static const char gray2[] = "#282737"; // unfocused window border
@@ -36,6 +51,15 @@ static const char *colors[][3] = {
     /*             fg       bg      border */
     [SchemeNorm] = {gray3, black, gray2},
     [SchemeSel] = {gray4, blue, blue},
+    [SchemeTag1] = {"#8aadf4", black, black},
+    [SchemeTag2] = {"#f4b8e4", black, black},
+    [SchemeTag3] = {"#f9e2af", black, black},
+    [SchemeTag4] = {"#a6e3a1", black, black},
+    [SchemeTag5] = {"#89b4fa", black, black},
+    [SchemeTag6] = {"#f5c2e7", black, black},
+    [SchemeTag7] = {"#94e2d5", black, black},
+    [SchemeTag8] = {"#fab387", black, black},
+    [SchemeTag9] = {"#cdd6f4", black, black},
 };
 
 /* tagging */
