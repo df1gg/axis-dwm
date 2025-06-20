@@ -744,7 +744,14 @@ void drawbar(Monitor *m) {
   x = 0;
   for (i = 0; i < LENGTH(tags); i++) {
     w = TEXTW(tags[i]);
-    drw_setscheme(drw, scheme[SchemeTag1 + i]);
+    if (!(occ & 1 << i)) {
+      // тег пустой — серый цвет
+      drw_setscheme(drw, scheme[SchemeTagEmpty]);
+    } else {
+      // тег занят — цвет по номеру
+      drw_setscheme(drw, scheme[SchemeTag1 + i]);
+    }
+
     drw_text(drw, x, 0, w - 1, bh, lrpad / 2 - 2, tags[i], urg & 1 << i);
 
     if (ulineall || (m->tagset[m->seltags] & (1 << i))) {

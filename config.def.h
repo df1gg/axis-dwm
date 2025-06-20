@@ -30,6 +30,7 @@ enum {
   SchemeTag7,
   SchemeTag8,
   SchemeTag9,
+  SchemeTagEmpty,
   SchemeLast
 };
 
@@ -60,6 +61,7 @@ static const char *colors[][3] = {
     [SchemeTag7] = {"#94e2d5", black, black},
     [SchemeTag8] = {"#fab387", black, black},
     [SchemeTag9] = {"#cdd6f4", black, black},
+    [SchemeTagEmpty] = {gray3, black, gray2},
 };
 
 /* tagging */
