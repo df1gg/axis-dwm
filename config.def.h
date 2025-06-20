@@ -3,6 +3,8 @@ static const unsigned int borderpx = 2; // граница окна
 static const unsigned int snap = 10;    // прилипаемость окон
 static const int showbar = 1;           // показывать статусбар
 static const int topbar = 1;            // бар сверху
+static const int vertpad = 10;          /* vertical padding of bar */
+static const int sidepad = 10;          /* horizontal padding of bar */
 static const char *fonts[] = {"JetBrainsMono Nerd Font:size=11"};
 static const char dmenufont[] = "JetBrainsMono Nerd Font:size=11";
 
