@@ -162,7 +162,7 @@ static const char *flameshotsavecmd[] = {
 static const char *lockcmd[] = {"slock", NULL};
 
 /* Файловый менеджер и браузер */
-static const char *fmtermcmd[] = {"alacritty", "-e", "lf", NULL};
+static const char *fmtermcmd[] = {"st", "-e", "lf", NULL};
 static const char *browsercmd[] = {"firefox", NULL};
 
 /* ========== Привязки клавиш ========== */
