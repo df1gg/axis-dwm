@@ -1,151 +1,98 @@
 # AxisDWM
 
-**AxisDWM** is a highly customized [dwm](https://dwm.suckless.org/) build with a warm, pastel Gruvbox-inspired aesthetic, sensible keybindings, carefully selected patches, and a modern, functional status bar. Built for simplicity, performance, and daily usability on minimalist setups.
+[![GitHub stars](https://img.shields.io/github/stars/df1gg/axis-dwm?style=social)](https://github.com/df1gg/axis-dwm/stargazers) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/df1gg/axis-dwm/blob/main/LICENSE)
 
-> ⚡ Powered by Arch Linux, configured by hand, styled for clarity.
+> 💠 **AxisDWM**: A minimal, keyboard-driven dwm fork with a pastel Gruvbox‑Catppuccin hybrid theme, sensible defaults, and an elegant, info‑rich status bar.
 
-## ✨ Features
+<p align="center">
+  <img src="./screenshots/axisdwm_preview.gif" alt="AxisDWM Preview" />
+</p>
 
-* 🎨 **Warm custom color scheme** (Catppuccin/Gruvbox hybrid)
-* 🧱 **Patched** dwm:
+## 🔥 Why AxisDWM?
 
-  * `status2d`, `vanitygaps`, `movestack`, `statuspadding`
-  * `notitle`, `underline tags`
-* ⛓ **Per-tag rules** for apps like Telegram, Firefox, Obsidian, etc.
-* 💡 **Functional status bar** (via shell script):
+* **Sleek Aesthetics**: Warm pastel tones inspired by Gruvbox and Catppuccin make your workspace a joy to use.
+* **Performance‑First**: Hand‑patched dwm keeps your system responsive and lightning‑fast.
+* **Out‑of‑the‑Box Usability**: Thoughtful defaults and ergonomic keybindings let you dive straight into work.
+* **Modular Status Bar**: Easily extend or swap modules to display volume, brightness, Wi-Fi, updates, and more.
 
-  * Volume, brightness, keyboard layout
-  * Temperature, CPU load, memory, uptime (off)
-  * Package updates, Wi-Fi status, date & time
-* 🧠 **Beautiful icon tags** (via Nerd Fonts) for semantic workspaces
-* 🪟 Gaps, paddings, bar margins — fully adjustable via keybinds
-* 🖱 XF86 support (volume, brightness, etc.)
-* 🔒 Screen lock, screenshots, floating toggle, layout switching
-* 🧹 Clean structure, with everything clearly commented in `config.h`
+## ✨ Highlights
 
-## 📸 Screenshot
+| Feature                      | Description                                                                                          |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------- |
+| 🎨 **Color Scheme**          | Gruvbox‑Catppuccin hybrid with customizable accents.                                                 |
+| 🧩 **Patched dwm**           | Includes `status2d`, `vanitygaps`, `movestack`, `barpadding`, `notitle`, `underline-tags`, and more. |
+| 🖥️ **Tag Icons**            | Semantic workspaces with Nerd Font icons for code, browsing, chat, etc.                              |
+| 🏷️ **Intelligent Rules**    | Auto‑assign apps (Firefox, Telegram, Obsidian) to specific tags.                                     |
+| 📊 **Dynamic Status Bar**    | Bash‑based script with modules for system stats, package updates, and notifications.                 |
+| ⌨️ **Ergonomic Keybindings** | Super‑key driven commands for window management, layouts, and scripts.                               |
 
-## 🔧 Dependencies (Arch Linux)
+## 📦 Installation
 
-Make sure you have these installed:
+1. **Clone repository**
 
-```bash
-sudo pacman -S base-devel xorg xorg-xinit \
-  libx11 libxft libxinerama xorg-xsetroot \
-  alsa-utils lm_sensors libxkbfile brightnessctl \
-  pamixer flameshot slock nerd-fonts
-```
+   ```bash
+   git clone https://github.com/df1gg/axis-dwm.git ~/.config/axisdwm
+   cd ~/.config/axisdwm
+   ```
+2. **Install dependencies (Arch Linux)**
 
-Also recommended:
+   ```bash
+   sudo pacman -S --needed base-devel xorg xorg-xinit libx11 libxft libxinerama \
+     xorg-xsetroot alsa-utils lm_sensors libxkbfile brightnessctl pamixer flameshot slock nerd-fonts-jetbrains-mono
+   ```
+3. **Build and install**
 
-* `yay` or another AUR helper
-* `xinit`, `alacritty`, `firefox`, `lf` (used in config)
-* [JetBrainsMono Nerd Font](https://github.com/ryanoasis/nerd-fonts) (used for bar & tags)
+   ```bash
+   sudo make clean install
+   ```
+4. **Enable in `.xinitrc`**
 
-## 🚀 Installation
+   ```bash
+   exec dwm
+   ```
+5. **Start**
 
-```bash
-git clone https://github.com/df1gg/axis-dwm.git ~/.config/axis-dwm
-cd ~/.config/axis-dwm
-sudo make clean install
-```
+   ```bash
+   startx
+   ```
 
-Then add to `.xinitrc`:
+> Tip: Use your favorite display manager by pointing its session file to this configuration.
 
-```bash
-exec dwm
-```
+## ⚙️ Usage & Configuration
 
-And start with:
+* **Keybindings**: See [`config.h`](config.h) for a complete list. Common shortcuts:
 
-```bash
-startx
-```
+  * `Super+Enter`: Launch your default terminal (`st`)
+  * `Super+p`: dmenu
+  * `Super+Shift+c`: Close window
+  * `Super+j/k`: Navigate windows
+  * `Super+Space`: Cycle layouts
 
-Or use it via a display manager of your choice.
+* **Status Bar**: Modify [`scripts/status.sh`](scripts/status.sh) to add/remove modules. Use `^c`/`^b` for color control.
 
+* **Customize Bar Colors**: Edit [`scripts/bar_themes/gruvbox`](scripts/bar_themes/gruvbox) to tweak palette.
 
-## ⌨️ Keybindings (Super = Mod4)
+## 📸 Screenshots
 
-| Keys                  | Action                        |
-| --------------------- | ----------------------------- |
-| `Super + Return`      | Launch terminal (`alacritty`) |
-| `Super + p`           | Launch dmenu                  |
-| `Super + b`           | Launch browser (Firefox)      |
-| `Super + e`           | Launch `lf` file manager      |
-| `Super + Shift + c`   | Close window                  |
-| `Super + j/k`         | Focus next/prev window        |
-| `Super + Shift + j/k` | Move window up/down           |
-| `Super + Space`       | Toggle layout                 |
-| `Super + f/m/t`       | Floating / Monocle / Tile     |
-| `Super + [1–9]`       | Switch tags                   |
-| `XF86Audio*`          | Volume control                |
-| `XF86MonBrightness*`  | Brightness control            |
-| `Super + Ctrl + L`    | Lock screen                   |
+![](screenshots/showcase_1.png)
+![](screenshots/showcase_2.png)
 
-...and many more. Everything is listed and commented in `config.h`.
+## 🤝 Contributing
 
-## 🎨 Tags
+1. Fork the repo
+2. Create a feature branch (`git checkout -b feature/awesome`)
+3. Commit your changes (`git commit -m "Add awesome feature"`)
+4. Push to the branch (`git push origin feature/awesome`)
+5. Open a Pull Request 🚀
 
-Icons are used to represent tag workspaces. Example:
+## 🎖️ Getting Support
 
-| Tag | Icon | Purpose          |
-| --- | ---- | ---------------- |
-| 1   | ``  | Code / Neovim    |
-| 2   | ``  | Terminal         |
-| 3   | ``  | Browser          |
-| 4   | ``  | System tools     |
-| 5   | ``  | AI / LLM Studio  |
-| 6   | ``  | Notes / Obsidian |
-| 7   | ``  | Telegram / Chat  |
-| 8   | ``  | Media / Music    |
-| 9   | ``  | Sandbox / Junk   |
-
-## 💡 Status Bar Modules
-
-Each module uses `^c`/`^b` syntax for color. Current modules:
-
-*   Pacman updates
-*   Brightness (percentage)
-*  /   Volume (or muted)
-*   Keyboard layout (`us`, `ru`, etc.)
-*   CPU temperature
-* CPU load (1min)
-* RAM usage
-* IP address (IPv4, local)
-*   Wi-Fi status
-*   Clock
-
-The bar script is located in `/scripts/status.sh`. You can extend it by adding more functions and appending them to the `xsetroot -name` line.
-
-## 🧩 Included Patches
-
-* `barpadding`
-* `status2d`
-* `vanitygaps`
-* `movestack`
-* `statuspadding`
-* `notitle`
-* `underline tags`
-
-## 🧠 Philosophy
-
-> “Minimal, but never bare. Beautiful, but not bloated.”
-
-AxisDWM is designed to be the perfect balance between performance, comfort, and aesthetics. It embraces dwm's suckless roots while enhancing usability and modern productivity.
+* Report issues or request features via GitHub Issues
 
 ## 📜 License
 
-This is a personal build based on [dwm](https://dwm.suckless.org/), which is MIT licensed. Feel free to fork, study, and adapt.
-
-## 📫 Contact / Credit
-
-Created and maintained by **[@df1gg](https://github.com/df1gg)**
-Icons powered by [Nerd Fonts](https://www.nerdfonts.com/)
-Theme inspired by Gruvbox Material
-DWM base: [https://dwm.suckless.org/](https://dwm.suckless.org/)
+AxisDWM is MIT licensed. See [LICENSE](LICENSE) for details.
 
 ---
 
-> Feel free to fork and customize for your own rice! 🎉
-
+> Ready to transform your Linux experience? ⭐ **Star this repo** and let AxisDWM become the centerpiece of your workflow!
