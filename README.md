@@ -5,7 +5,7 @@
 > 💠 **AxisDWM**: A minimal, keyboard-driven dwm fork with a pastel Gruvbox‑Catppuccin hybrid theme, sensible defaults, and an elegant, info‑rich status bar.
 
 <p align="center">
-  <img src="./screenshots/axisdwm_preview.gif" alt="AxisDWM Preview" />
+  <img src="./screenshots/showcase_2.png" alt="AxisDWM Preview" />
 </p>
 
 ## 🔥 Why AxisDWM?
